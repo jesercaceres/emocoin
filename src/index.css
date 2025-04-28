@@ -1,0 +1,26 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #eee7e7;
+  color: #ffffff;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+@font-face {
+  font-family: "CursedCalvade";
+  src: url("./assets/fonts/CursedCavalcade-xRxwm.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Saint";
+  src: url("./assets/fonts/Saint-4ZJ4.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}

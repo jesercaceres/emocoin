@@ -1,0 +1,85 @@
+/* header.css */
+
+/* Estilos básicos */
+.header {
+  background-color: #1a1a1a;
+  color: #fff;
+  padding: 0.1rem 1rem;
+  border-bottom: 1px solid #333;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 58px;
+  height: 58px;
+  margin-right: 0.8rem;
+}
+
+.title {
+  font-family: 'CursedCalvade', sans-serif;
+  margin: 0;
+  font-size: 1.7rem;
+  letter-spacing: 0.2rem;
+}
+
+.nav {
+  display: flex;
+  gap: 1.5rem;
+  margin-right: 10rem;
+  font-family: 'Saint', sans-serif;
+}
+
+.nav-item {
+  margin: 0;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+  /* Ajustes para telas pequenas (tablets e smartphones) */
+  .header {
+    flex-direction: column; /* Empilha logo e navegação */
+    padding: 1rem; 
+  }
+
+  .header-left {
+    margin-bottom: 1rem; /* Espaço entre logo e título */
+  }
+
+  .nav {
+    flex-direction: column; /* Coloca os itens de navegação em coluna */
+    gap: 1.3rem; /* Reduz o espaço entre os itens */
+    margin-right: 0;
+  }
+
+  .nav-item {
+    text-align: center; /* Centraliza os itens de navegação */
+  }
+
+  .logo {
+    width: 48px; /* Reduz o tamanho da logo em telas menores */
+    height: 48px;
+  }
+
+  .title {
+    font-size: 1.5rem; /* Ajusta o tamanho da fonte */
+  }
+}
+
+/* Responsividade para telas muito pequenas */
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.2rem; /* Reduz ainda mais o tamanho da fonte em telas pequenas */
+  }
+
+  .logo {
+    width: 40px;
+    height: 40px;
+  }
+}
