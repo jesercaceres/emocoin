@@ -1,6 +1,6 @@
 // src/components/Header.tsx
-import logo from "../assets/images/emocoin.png"; 
-import './header.css'; // Importa o arquivo CSS
+import logo from "../assets/images/emocoin.png";
+import "./header.css"; // Importa o arquivo CSS
 
 const Header = () => {
   return (
@@ -13,9 +13,15 @@ const Header = () => {
 
       {/* Direita: Seções */}
       <nav className="nav">
-        <p className="nav-item">Home</p>
-        <p className="nav-item">What is Emocoin?</p>
-        <p className="nav-item">Community</p>
+        <p className="nav-item">
+          <a href="#/home">Home</a>
+        </p>
+        <p className="nav-item">
+          <a href="#/about">What is Emocoin?</a>
+        </p>
+        <p className="nav-item">
+          <a href="#/community">Community</a>
+        </p>
       </nav>
     </header>
   );

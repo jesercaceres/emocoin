@@ -11,6 +11,25 @@
   justify-content: space-between;
 }
 
+/* TODO: Jeser, estiliza aqui depois */
+.header a {
+  /* Ajuste aqui */
+  color: inherit;
+  text-decoration: none;
+}
+
+.header a:hover {
+  /* Ajuste aqui */
+}
+
+.header a:visited {
+  /* Ajuste aqui */
+}
+
+.header a:active {
+  /* Ajuste aqui */
+}
+
 .header-left {
   display: flex;
   align-items: center;
@@ -23,7 +42,7 @@
 }
 
 .title {
-  font-family: 'CursedCalvade', sans-serif;
+  font-family: "CursedCalvade", sans-serif;
   margin: 0;
   font-size: 1.7rem;
   letter-spacing: 0.2rem;
@@ -33,7 +52,7 @@
   display: flex;
   gap: 1.5rem;
   margin-right: 10rem;
-  font-family: 'Saint', sans-serif;
+  font-family: "Saint", sans-serif;
 }
 
 .nav-item {
@@ -45,7 +64,7 @@
   /* Ajustes para telas pequenas (tablets e smartphones) */
   .header {
     flex-direction: column; /* Empilha logo e navegação */
-    padding: 1rem; 
+    padding: 1rem;
   }
 
   .header-left {
