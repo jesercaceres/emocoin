@@ -48,7 +48,7 @@ const Hero: React.FC = () => {
             A meme coin for those who cried, loved, and never forgot.
           </p>
           <div className="hero-buttons">
-            <button className="btn-primary">🖤 Buy EmoCoin</button>
+            <button className="btn-primary">Buy EmoCoin</button>
             <button className="btn-secondary">Join the EmoCrew</button>
           </div>
           <div className="hero-bubble">

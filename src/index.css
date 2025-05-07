@@ -1,16 +1,55 @@
-/* Reset básico */
+/* 1) Import Google Fonts (sempre no topo, numa linha só) */
+@import url("https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&family=Permanent+Marker&family=Rock+Salt&family=UnifrakturCook&family=Special+Elite&family=Shadows+Into+Light&display=swap");
+
+/* 2) Variáveis globais */
+:root {
+  /* cores */
+  --bg-color: #1e1e1e;
+  --text-color: #ffffff;
+
+  /* fonts */
+  --font-base: "Segoe UI", sans-serif;
+  --font-emo-title: "Creepster", cursive;
+  --font-emo-drip: "Nosifer", cursive;
+  --font-emo-hand: "Permanent Marker", cursive;
+  --font-emo-rock: "Rock Salt", cursive;
+  --font-emo-gothic: "UnifrakturCook", serif;
+  --font-emo-type: "Special Elite", monospace;
+  --font-emo-light: "Shadows Into Light", cursive;
+
+  /* → Novas variáveis para botões */
+  --btn-radius: 8px;
+
+  /* Primary */
+  --btn-primary-bg: #ff007f;
+  --btn-primary-text: #ffffff;
+  --btn-primary-hover: #e60073;
+
+  /* Secondary */
+  --btn-secondary-border: #ff007f;
+  --btn-secondary-text: #ff007f;
+  --btn-secondary-hover-bg: #ff007f;
+  --btn-secondary-hover-text: #ffffff;
+}
+
+/* 3) Reset básico */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* 4) Tema global aplicado ao <body> */
 body {
-  background-color: #eee7e7;
-  color: #ffffff;
-  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg-color);
+  background-image: var(--bg-pattern);
+  background-repeat: repeat;
+  background-size: auto;
+  color: var(--text-color);
+  font-family: var(--font-emo-dripe);
 }
 
+/* 5) @font-face locais (se você ainda usar) */
 @font-face {
   font-family: "CursedCalvade";
   src: url("./assets/fonts/CursedCavalcade-xRxwm.ttf") format("truetype");
@@ -24,3 +63,5 @@ body {
   font-weight: normal;
   font-style: normal;
 }
+
+
