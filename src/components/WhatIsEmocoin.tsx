@@ -1,10 +1,30 @@
-import React from "react";
+// src/components/WhatIsEmocoin.tsx
+import React, { useEffect, useRef } from "react";
 import "./WhatIsEmocoin.css";
 import emoMascot from "../assets/images/emogirlNeon.png";
 
 const WhatIsEmocoin: React.FC = () => {
+  const ref = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const body = document.body;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.target === ref.current && entry.isIntersecting) {
+            body.classList.add("page-whatis");
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="whatis-container">
+    <section id="whatis" ref={ref} className="whatis-container">
       <div className="whatis-text">
         <h1 className="neon-sign">What is EmoCoin?</h1>
         <h2 className="whatis-subtitle">
@@ -25,26 +45,20 @@ const WhatIsEmocoin: React.FC = () => {
           cried to early 2000s playlists.
         </p>
         <p>
-          Beyond technology, EmoCoin is a movement—summarized in the
+          Beyond technology, EmoCoin is a movement—summarized in the{" "}
           <a href="/manifesto" className="whatis-link">
-            {" "}
             Emo Manifesto
           </a>
           , and supported by an unapologetically emotional community just like
-          you.
+          you.{" "}
           <a href="/learn" className="whatis-link">
-            {" "}
             Learn more.
           </a>
         </p>
       </div>
 
       <div className="whatis-image-placeholder">
-        <img
-          src={emoMascot}
-          alt="EmoCoin Mascot"
-          className="whatis-image"
-        />
+        <img src={emoMascot} alt="EmoCoin Mascot" className="whatis-image" />
       </div>
     </section>
   );

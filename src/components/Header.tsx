@@ -1,27 +1,31 @@
 // src/components/Header.tsx
+import React, { useState, useEffect } from "react";
 import logo from "../assets/images/emocoin.png";
-import "./header.css"; // Importa o arquivo CSS
+import "./header.css";
 
-const Header = () => {
+const Header: React.FC = () => {
+  const [isShrunk, setIsShrunk] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // quando passar de 50px de scroll, ativa shrink
+      setIsShrunk(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="header">
-      {/* Esquerda: Logo + Título */}
+    <header className={`header ${isShrunk ? "shrink" : ""}`}>
       <div className="header-left">
-        <img src={logo} alt="Emocoin logo" className="logo" />
-        <h1 className="title">Emocoin</h1>
+        <img src={logo} alt="EmoCoin logo" className="logo" />
+        <h1 className="title">EmoCoin</h1>
       </div>
-
-      {/* Direita: Seções */}
       <nav className="nav">
-        <p className="nav-item">
-          <a href="#/home">Home</a>
-        </p>
-        <p className="nav-item">
-          <a href="#/about">What is Emocoin?</a>
-        </p>
-        <p className="nav-item">
-          <a href="#/community">Community</a>
-        </p>
+        <a href="#hero" className="nav-item">Home</a>
+        <a href="#whatis" className="nav-item">What is EmoCoin?</a>
+        <a href="#community" className="nav-item">Community</a>
       </nav>
     </header>
   );

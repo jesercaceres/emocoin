@@ -3,32 +3,31 @@
 
 /* 2) Variáveis globais */
 :root {
-  /* cores */
-  --bg-color: #1e1e1e;
-  --text-color: #ffffff;
+  /* cores das seções */
+  --bg-home:        #1e1e1e;
+  --bg-whatis:      #12121e;
+  --bg-community:   #1a1a28;
+
+  --text-color:     #ffffff;
 
   /* fonts */
-  --font-base: "Segoe UI", sans-serif;
+  --font-base:      "Segoe UI", sans-serif;
   --font-emo-title: "Creepster", cursive;
-  --font-emo-drip: "Nosifer", cursive;
-  --font-emo-hand: "Permanent Marker", cursive;
-  --font-emo-rock: "Rock Salt", cursive;
-  --font-emo-gothic: "UnifrakturCook", serif;
-  --font-emo-type: "Special Elite", monospace;
+  --font-emo-drip:  "Nosifer", cursive;
+  --font-emo-hand:  "Permanent Marker", cursive;
+  --font-emo-rock:  "Rock Salt", cursive;
+  --font-emo-gothic:"UnifrakturCook", serif;
+  --font-emo-type:  "Special Elite", monospace;
   --font-emo-light: "Shadows Into Light", cursive;
 
   /* → Novas variáveis para botões */
-  --btn-radius: 8px;
-
-  /* Primary */
-  --btn-primary-bg: #ff007f;
-  --btn-primary-text: #ffffff;
-  --btn-primary-hover: #e60073;
-
-  /* Secondary */
-  --btn-secondary-border: #ff007f;
-  --btn-secondary-text: #ff007f;
-  --btn-secondary-hover-bg: #ff007f;
+  --btn-radius:          8px;
+  --btn-primary-bg:      #ff007f;
+  --btn-primary-text:    #ffffff;
+  --btn-primary-hover:   #e60073;
+  --btn-secondary-border:#ff007f;
+  --btn-secondary-text:  #ff007f;
+  --btn-secondary-hover-bg:   #ff007f;
   --btn-secondary-hover-text: #ffffff;
 }
 
@@ -40,28 +39,36 @@
 }
 
 /* 4) Tema global aplicado ao <body> */
+/* — cor inicial (home) e transição suave */
 body {
-  background-color: var(--bg-color);
-  background-image: var(--bg-pattern);
-  background-repeat: repeat;
-  background-size: auto;
+  background-color: var(--bg-home);
   color: var(--text-color);
-  font-family: var(--font-emo-dripe);
+  font-family: var(--font-emo-drip);
+  transition: background-color 0.6s ease-in-out;
 }
 
-/* 5) @font-face locais (se você ainda usar) */
+/* quando a seção “What is EmoCoin?” estiver visível */
+body.page-whatis {
+  background-color: var(--bg-whatis);
+}
+
+/* quando a seção “Community” estiver visível */
+body.page-community {
+  background-color: var(--bg-community);
+}
+
+/* index.css */
+html {
+  scroll-behavior: smooth;
+}
+
+
+/* 5) @font-face locais (se você usar) */
 @font-face {
   font-family: "CursedCalvade";
   src: url("./assets/fonts/CursedCavalcade-xRxwm.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
 }
-
 @font-face {
   font-family: "Saint";
   src: url("./assets/fonts/Saint-4ZJ4.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
 }
-
-
