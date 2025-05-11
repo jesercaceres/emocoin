@@ -1,104 +1,129 @@
 /* header.css */
 
-/* Estilos básicos */
+/* Header fixo no topo e efeito de shrink */
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   background-color: #1a1a1a;
   color: #fff;
-  padding: 0.1rem 1rem;
+  padding: 0.3rem 1rem;                    /* estado normal */
   border-bottom: 1px solid #333;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transition: padding 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  z-index: 1000;
 }
 
-/* TODO: Jeser, estiliza aqui depois */
+.header.shrink {
+  padding: 0 1rem;                        /* altura mínima ao scroll */
+  background-color: rgba(26, 26, 26, 0.95);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Links de navegação */
 .header a {
-  /* Ajuste aqui */
-  color: inherit;
+  color: var(--text-color);
   text-decoration: none;
+  padding: 0.4rem 0.6rem;
+  transition: color 0.2s ease, background-color 0.2s ease;
+  border-radius: 4px;
 }
 
 .header a:hover {
-  /* Ajuste aqui */
+  color: var(--btn-primary-text);
+  background-color: var(--btn-primary-bg);
 }
 
-.header a:visited {
-  /* Ajuste aqui */
-}
+.header a:visited { color: var(--text-color); }
+.header a:active  { color: var(--btn-primary-hover); }
 
-.header a:active {
-  /* Ajuste aqui */
-}
-
+/* Logo e título */
 .header-left {
   display: flex;
   align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.header.shrink .header-left {
+  transform: scale(0.90);                  /* encolhimento mais perceptível */
 }
 
 .logo {
-  width: 58px;
-  height: 58px;
+  width: 50px;
+  height: 50px;
   margin-right: 0.8rem;
+  transition: width 0.2s ease, height 0.2s ease;
+}
+
+.header.shrink .logo {
+  width: 42px;     /* redução adicional ao scroll */
+  height: 42px;
 }
 
 .title {
   font-family: "CursedCalvade", sans-serif;
   margin: 0;
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   letter-spacing: 0.2rem;
+  transition: font-size 0.2s ease;
 }
 
+.header.shrink .title {
+  font-size: 1.3rem; /* fonte menor ao encolher */
+}
+
+/* Navegação principal */
 .nav {
   display: flex;
-  gap: 1.5rem;
-  margin-right: 10rem;
+  gap: 1rem;
+  margin-right: 6rem;
   font-family: "Saint", sans-serif;
+  transition: gap 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
 }
 
-.nav-item {
-  margin: 0;
+.header.shrink .nav {
+  gap: 0.6rem;       /* gap mais apertado */
+  transform: scale(0.85);  /* nav também encolhe */
+  opacity: 0.85;
 }
 
 /* Responsividade para telas menores */
 @media (max-width: 768px) {
-  /* Ajustes para telas pequenas (tablets e smartphones) */
   .header {
-    flex-direction: column; /* Empilha logo e navegação */
-    padding: 1rem;
+    flex-direction: column;
+    padding: 0.3rem 1rem;
   }
 
   .header-left {
-    margin-bottom: 1rem; /* Espaço entre logo e título */
+    margin-bottom: 0.8rem;
   }
 
   .nav {
-    flex-direction: column; /* Coloca os itens de navegação em coluna */
-    gap: 1.3rem; /* Reduz o espaço entre os itens */
+    flex-direction: column;
+    gap: 0.8rem;
     margin-right: 0;
   }
 
-  .nav-item {
-    text-align: center; /* Centraliza os itens de navegação */
-  }
-
   .logo {
-    width: 48px; /* Reduz o tamanho da logo em telas menores */
-    height: 48px;
+    width: 40px;
+    height: 40px;
   }
 
   .title {
-    font-size: 1.5rem; /* Ajusta o tamanho da fonte */
+    font-size: 1.4rem;
   }
 }
 
 /* Responsividade para telas muito pequenas */
 @media (max-width: 480px) {
   .title {
-    font-size: 1.2rem; /* Reduz ainda mais o tamanho da fonte em telas pequenas */
+    font-size: 1.2rem;
   }
-
   .logo {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
   }
 }
