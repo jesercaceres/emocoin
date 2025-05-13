@@ -1,7 +1,8 @@
 // src/components/WhatIsEmocoin.tsx
 import React, { useEffect, useRef } from "react";
 import "./WhatIsEmocoin.css";
-import emoMascot from "../assets/images/emogirlNeon.png";
+import emoMascot from '../../assets/images/emogirlNeon.png';
+
 
 const WhatIsEmocoin: React.FC = () => {
   const ref = useRef<HTMLElement>(null);
