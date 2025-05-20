@@ -1,8 +1,6 @@
-// src/components/WhatIsEmocoin.tsx
 import React, { useEffect, useRef } from "react";
 import "./WhatIsEmocoin.css";
-import emoMascot from '../../assets/images/emogirlNeon.png';
-
+import emoMascot from "../../assets/images/emogirlNeon.png";
 
 const WhatIsEmocoin: React.FC = () => {
   const ref = useRef<HTMLElement>(null);
@@ -12,8 +10,12 @@ const WhatIsEmocoin: React.FC = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.target === ref.current && entry.isIntersecting) {
-            body.classList.add("page-whatis");
+          if (entry.target === ref.current) {
+            if (entry.isIntersecting) {
+              body.classList.add("page-whatis");
+            } else {
+              body.classList.remove("page-whatis");
+            }
           }
         });
       },
@@ -25,7 +27,7 @@ const WhatIsEmocoin: React.FC = () => {
   }, []);
 
   return (
-    <section id="whatis" ref={ref} className="whatis-container">
+    <section id="whatis" ref={ref} className="section whatis-container">
       <div className="whatis-text">
         <h1 className="neon-sign">What is EmoCoin?</h1>
         <h2 className="whatis-subtitle">

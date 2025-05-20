@@ -1,114 +1,77 @@
-/* src/pages/Tokenomics.css */
+.tokenomics {
+  position: relative;
+  color: #eee;
+  padding: 10rem 1rem 6rem;
+  overflow: hidden;
+}
 
-/* Página inteira */
-.tokenomics-page {
-    background-color: var(--bg-whatis);
-    padding: 4rem 1rem;
-    color: var(--text-color);
-  }
-  
-  /* Centraliza conteúdo e limita largura */
-  .tokenomics-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  /* Cabeçalho */
-  .tokenomics-header {
-    text-align: center;
-    margin-bottom: 3rem;
-  }
-  
-  .tokenomics-header h1 {
-    font-family: var(--font-emo-drip);
-    font-size: 3rem;
-    color: #ffffff;
-    margin-bottom: 0.5rem;
-    letter-spacing: 2px;
-  }
-  
-  .tokenomics-header p {
-    font-family: var(--font-base);
-    color: #aaaaaa;
-    font-size: 1.125rem;
-  }
-  
-  .tokenomics-header .emo {
-    color: var(--btn-primary-bg);
-    font-weight: bold;
-  }
-  
-  /* Grid responsivo para cards */
-  .tokenomics-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  
-  @media (min-width: 640px) {
-    .tokenomics-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  
-  @media (min-width: 1024px) {
-    .tokenomics-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-  
-  /* Cards interativos */
-  .tokenomics-card {
-    background-color: #1e1e1e;
-    border: 1px solid #333333;
-    border-radius: 16px;
-    padding: 2rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-align: center;
-  }
-  
-  .tokenomics-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
-  }
-  
-  .tokenomics-card h3 {
-    font-family: var(--font-emo-title);
-    font-size: 1.5rem;
-    color: #ffffff;
-    margin-bottom: 1rem;
-  }
-  
-  .tokenomics-card p {
-    font-family: var(--font-base);
-    color: #cccccc;
-    font-size: 1rem;
-    line-height: 1.5;
-  }
-  
-  /* Class hook para o gráfico dentro do card */
-  .tokenomics-chart {
-    position: relative;
-    height: 250px;
-    margin-top: 1rem;
-  }
-  
-  /* Botões de fechar no modal (shadcn/ui) */
-  .btn-secondary {
-    background: transparent;
-    border: 2px solid var(--btn-primary-bg);
-    color: var(--btn-primary-bg);
-    padding: 0.5rem 1rem;
-    border-radius: var(--btn-radius);
-    font-family: var(--font-base);
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  
-  .btn-secondary:hover {
-    background-color: var(--btn-primary-bg);
-    color: #ffffff;
-  }
-  
+.tokenomics__content {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.tokenomics__title {
+  font-family: 'Nosifer', cursive;
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  color: #ff4fa1;
+}
+
+.tokenomics__subtitle {
+  font-family: var(--font-emo-type);
+  font-size: 1.2rem;
+  margin-bottom: 3rem;
+  color: #ccc;
+}
+
+.tokenomics__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2.5rem;
+}
+
+.tokenomics__card {
+  background: #1a1a1a;
+  border-radius: 1rem;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.7);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tokenomics__card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+}
+
+.tokenomics__icon {
+  width: 150px;
+  height: auto;
+  image-rendering: pixelated;
+  margin: 0 auto 1rem;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.tokenomics__card:hover .tokenomics__icon {
+  transform: scale(1.05);
+}
+
+.tokenomics__label {
+  display: block;
+  font-family: var(--font-emo-light);
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.tokenomics__value {
+  font-family: 'Nosifer', cursive;
+  font-size: 1.6rem;
+  color: #ff4fa1;
+}
+
+html {
+  scroll-behavior: smooth;
+}

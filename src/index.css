@@ -5,7 +5,8 @@
 :root {
   /* cores das seções */
   --bg-home:        #1e1e1e;
-  --bg-whatis:      #12121e;
+  --bg-whatis:      #15151a;
+  --bg-tokenomics:  #181818;; /* ✅ fundo escuro sólido sem clarão */
   --bg-community:   #1a1a28;
 
   --text-color:     #ffffff;
@@ -20,13 +21,13 @@
   --font-emo-type:  "Special Elite", monospace;
   --font-emo-light: "Shadows Into Light", cursive;
 
-  /* → Novas variáveis para botões */
-  --btn-radius:          8px;
-  --btn-primary-bg:      #ff007f;
-  --btn-primary-text:    #ffffff;
-  --btn-primary-hover:   #e60073;
-  --btn-secondary-border:#ff007f;
-  --btn-secondary-text:  #ff007f;
+  /* botões */
+  --btn-radius:               8px;
+  --btn-primary-bg:           #ff007f;
+  --btn-primary-text:         #ffffff;
+  --btn-primary-hover:        #e60073;
+  --btn-secondary-border:     #ff007f;
+  --btn-secondary-text:       #ff007f;
   --btn-secondary-hover-bg:   #ff007f;
   --btn-secondary-hover-text: #ffffff;
 }
@@ -39,7 +40,6 @@
 }
 
 /* 4) Tema global aplicado ao <body> */
-/* — cor inicial (home) e transição suave */
 body {
   background-color: var(--bg-home);
   color: var(--text-color);
@@ -47,27 +47,39 @@ body {
   transition: background-color 0.6s ease-in-out;
 }
 
-/* quando a seção “What is EmoCoin?” estiver visível */
+/* 5) Transições de fundo por seção */
 body.page-whatis {
   background-color: var(--bg-whatis);
 }
 
-/* quando a seção “Community” estiver visível */
 body.page-community {
   background-color: var(--bg-community);
 }
 
-/* index.css */
+body.page-tokenomics {
+  background-color: var(--bg-tokenomics); /* ✅ corrigido para fundo sólido */
+}
+
+/* 6) Scroll suave para âncoras */
 html {
   scroll-behavior: smooth;
 }
 
+/* 7) Padrão para todas as sections */
+.section {
+  padding: 8rem 1rem;
+  min-height: 100vh;
+  scroll-margin-top: 6rem;
+  position: relative;
+  z-index: 0;
+}
 
-/* 5) @font-face locais (se você usar) */
+/* 8) @font-face locais */
 @font-face {
   font-family: "CursedCalvade";
   src: url("./assets/fonts/CursedCavalcade-xRxwm.ttf") format("truetype");
 }
+
 @font-face {
   font-family: "Saint";
   src: url("./assets/fonts/Saint-4ZJ4.ttf") format("truetype");
