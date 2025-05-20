@@ -1,5 +1,3 @@
-/* WhatIsEmoCoin.css */
-
 /* Container geral em grid */
 .whatis-container {
   display: grid;
@@ -10,9 +8,10 @@
   align-items: start;
   position: relative;
   box-sizing: border-box;
+  min-height: inherit;
 }
 
-/* Neon-sign ocupando todas as colunas */
+/* Neon title ocupando todas as colunas */
 .neon-sign {
   grid-column: 1 / -1;
   justify-self: start;
@@ -27,7 +26,7 @@
   animation: neonFlicker 2s infinite;
 }
 
-/* Texto na coluna da esquerda */
+/* Texto principal à esquerda */
 .whatis-text {
   grid-column: 1 / 2;
   max-width: 100%;
@@ -60,13 +59,15 @@
   margin-left: 5px;
 }
 
-/* Imagem na coluna da direita */
+/* Imagem à direita com ajuste de posicionamento */
 .whatis-image-placeholder {
   grid-column: 2 / 3;
-  justify-self: end;
-  text-align: right;
+  justify-self: center;
+  align-self: center;
   max-width: 400px;
   width: 100%;
+  padding-right: 2rem;
+  box-sizing: border-box;
 }
 
 .whatis-image {
@@ -88,7 +89,7 @@
     0 0 50px rgba(255, 79, 161, 0.6);
 }
 
-/* Neon flicker */
+/* Neon flicker animado */
 @keyframes neonFlicker {
   0%, 100% {
     opacity: 1;
@@ -106,7 +107,7 @@
   }
 }
 
-/* Responsivo */
+/* Responsivo: tablets */
 @media (max-width: 1024px) {
   .whatis-container {
     grid-template-columns: 1fr 1fr;
@@ -114,20 +115,20 @@
   }
   .whatis-image-placeholder {
     max-width: 300px;
+    padding-right: 1rem;
   }
 }
 
-/* Mobile: reduz gap entre seções e dá mais folga nas laterais */
+/* Responsivo: mobile */
 @media (max-width: 768px) {
-  /* Hero.css: diminuir padding-bottom */
   .hero {
     padding-bottom: 20px !important;
   }
 
   .whatis-container {
     display: block;
-    /* muito menos padding-top para colar no Hero */
     padding: 20px 5% !important;
+    min-height: inherit;
   }
 
   .neon-sign {
@@ -141,5 +142,13 @@
 
   .whatis-image-placeholder {
     display: none;
+  }
+}
+
+/* Telas ultra-largas */
+@media (min-width: 1440px) {
+  .whatis-image-placeholder {
+    max-width: 340px;
+    padding-right: 4rem;
   }
 }

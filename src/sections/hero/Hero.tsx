@@ -1,11 +1,11 @@
 // src/components/Hero.tsx
 import React, { useEffect, useRef } from "react";
 import "./Hero.css";
-import emoboy from "../assets/images/emocoin.png";
-import bear from "../assets/images/heroimgs/bear.png";
-import banner2 from "../assets/images/heroimgs/heart.png";
-import decoBottomLeft from "../assets/images/heroimgs/guitar.png";
-import decoBottomRight from "../assets/images/heroimgs/book.png";
+import emoboy from "../../assets/images/emocoin.png";
+import bear from "../../assets/images/heroimgs/bear.png";
+import banner2 from "../../assets/images/heroimgs/heart.png";
+import decoBottomLeft from "../../assets/images/heroimgs/guitar.png";
+import decoBottomRight from "../../assets/images/heroimgs/book.png";
 
 const Hero: React.FC = () => {
   const ref = useRef<HTMLElement>(null);
