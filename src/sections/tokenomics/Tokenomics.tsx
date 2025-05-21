@@ -4,10 +4,10 @@ import { useInView } from 'react-intersection-observer';
 import './Tokenomics.css';
 
 // Importação das imagens
-import SupplyImg from '../../assets/images/tokenomics/Supply.png';
-import CirculatingSupplyImg from '../../assets/images/tokenomics/CirculatingSupply (2).png';
-import TeamAllocationImg from '../../assets/images/tokenomics/TeamAllocation (1).png';
-import CommunityPoolImg from '../../assets/images/tokenomics/pool (1).png';
+import SupplyImg from '../../assets/images/tokenomicsImgs/Supply.png';
+import CirculatingSupplyImg from '../../assets/images/tokenomicsImgs/CirculatingSupply (2).png';
+import TeamAllocationImg from '../../assets/images/tokenomicsImgs/TeamAllocation (1).png';
+import CommunityPoolImg from '../../assets/images/tokenomicsImgs/pool (1).png';
 
 interface Metric {
   label: string;
