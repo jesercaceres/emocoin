@@ -8,6 +8,7 @@
   --bg-whatis:      #15151a;
   --bg-tokenomics:  #181818;; /* ✅ fundo escuro sólido sem clarão */
   --bg-community:   #1a1a28;
+  --bg-howTobuy: #1a1a28;
 
   --text-color:     #ffffff;
 
@@ -58,6 +59,10 @@ body.page-community {
 
 body.page-tokenomics {
   background-color: var(--bg-tokenomics); /* ✅ corrigido para fundo sólido */
+}
+
+body.page-howToBuy {
+  background-color: var(--bg-howTobuy);
 }
 
 /* 6) Scroll suave para âncoras */

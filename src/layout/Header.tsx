@@ -26,7 +26,7 @@ const Header: React.FC = () => {
         <a href="#hero" className="nav-item">Home</a>
         <a href="#whatis" className="nav-item">What is EmoCoin?</a>
         <a href="#tokenomics" className="nav-item">Tokenomics</a>
-        <a href="#tokenomics" className="nav-item">How to Buy</a>
+        <a href= "#howToBuy" className="nav-item">How To Buy</a>
       </nav>
     </header>
   );
