@@ -28,12 +28,14 @@ const steps = [
 ];
 
 const HowToBuy = () => {
-  const disableAnimation = typeof window !== "undefined" && window.location.hash === "#howToBuy";
+  const disableAnimation =
+    typeof window !== "undefined" && window.location.hash === "#howToBuy";
 
   return (
     <motion.section
       id="howToBuy"
       className="section htb"
+      style={{ minHeight: "100vh" }} // 👈 garante altura mesmo com animation
       initial={disableAnimation ? false : "hidden"}
       whileInView="visible"
       viewport={{ amount: 0.3 }}
