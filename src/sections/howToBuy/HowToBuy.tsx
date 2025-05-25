@@ -28,11 +28,13 @@ const steps = [
 ];
 
 const HowToBuy = () => {
+  const disableAnimation = typeof window !== "undefined" && window.location.hash === "#howToBuy";
+
   return (
     <motion.section
-      id="howToBuy" // <- aqui!
-      className="htb"
-      initial="hidden"
+      id="howToBuy"
+      className="section htb"
+      initial={disableAnimation ? false : "hidden"}
       whileInView="visible"
       viewport={{ amount: 0.3 }}
       variants={{
