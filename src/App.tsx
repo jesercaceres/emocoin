@@ -1,5 +1,5 @@
 // src/App.tsx
-import Index from './pages/index';
+import Index from './pages/Index';
 
 function App() {
   return <Index />;
