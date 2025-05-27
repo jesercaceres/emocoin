@@ -1,88 +1,94 @@
-import React, { useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import './Tokenomics.css';
+import React, { useEffect, useRef } from "react";
+import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
+import "./Tokenomics.css";
 
-// Importação das imagens
-import SupplyImg from '../../assets/images/tokenomicsImgs/Supply.png';
-import CirculatingSupplyImg from '../../assets/images/tokenomicsImgs/CirculatingSupply (2).png';
-import TeamAllocationImg from '../../assets/images/tokenomicsImgs/TeamAllocation (1).png';
-import CommunityPoolImg from '../../assets/images/tokenomicsImgs/pool (1).png';
+import SupplyImg from "../../assets/images/tokenomicsImgs/Supply.png";
+import CirculatingSupplyImg from "../../assets/images/tokenomicsImgs/CirculatingSupply (2).png";
+import TeamAllocationImg from "../../assets/images/tokenomicsImgs/TeamAllocation (1).png";
+import CommunityPoolImg from "../../assets/images/tokenomicsImgs/pool (1).png";
 
-interface Metric {
-  label: string;
-  value: string;
-  image: string;
-}
-
-const metrics: Metric[] = [
-  { label: 'Total Supply',       value: '1 000 000 ', image: SupplyImg },
-  { label: 'Circulating Supply', value: '500 000 ',   image: CirculatingSupplyImg },
-  { label: 'Team Allocation',    value: '10%',           image: TeamAllocationImg },
-  { label: 'Community Pool',     value: '20%',           image: CommunityPoolImg },
+const metrics = [
+  { label: "Total Supply", value: "1 000 000", image: SupplyImg },
+  { label: "Circulating Supply", value: "500 000", image: CirculatingSupplyImg },
+  { label: "Team Allocation", value: "10%", image: TeamAllocationImg },
+  { label: "Community Pool", value: "20%", image: CommunityPoolImg },
 ];
 
 const Tokenomics: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const [ref, inView] = useInView({
-    triggerOnce: false,
-    threshold: 0.5,
-  });
+  const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.5 });
 
   useEffect(() => {
     const body = document.body;
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.target === sectionRef.current) {
-            if (entry.isIntersecting) {
-              body.classList.add("page-tokenomics");
-            } else {
-              body.classList.remove("page-tokenomics");
-            }
-          }
-        });
+      ([entry]) => {
+        body.classList.toggle("page-tokenomics", entry.isIntersecting);
       },
       { threshold: 0.5 }
     );
 
     if (sectionRef.current) observer.observe(sectionRef.current);
+
+    // ⚙️ Força atualização do locomotive-scroll após renderização do título
+    setTimeout(() => {
+      try {
+        const scrollContainers = document.querySelectorAll("[data-scroll-container]");
+        if (
+          scrollContainers.length > 0 &&
+          (scrollContainers[0] as any)['locomotive']
+        ) {
+          (scrollContainers[0] as any)['locomotive'].update();
+        }
+      } catch (err) {
+        console.warn("Locomotive update failed:", err);
+      }
+    }, 800);
+
     return () => observer.disconnect();
   }, []);
 
   return (
-    <section
-      id="tokenomics"
-      className="section tokenomics"
-      ref={(el) => {
-        sectionRef.current = el;
-        ref(el);
-      }}
-    >
-      <div className="tokenomics__content">
-        <h2 className="tokenomics__title">Tokenomics</h2>
+    <section className="section tokenomics" ref={sectionRef}>
+      <div id="tokenomics" className="tokenomics__content" ref={ref}>
+        <div
+          className="tokenomics__title"
+          aria-label="TOKENOMICS"
+          style={{ display: "flex", justifyContent: "center", gap: "0.2em" }}
+        >
+          {"TOKENOMICS".split("").map((char, i) => (
+            <motion.span
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.05, duration: 0.4 }}
+              viewport={{ once: true }}
+              style={{ display: "inline-block" }}
+            >
+              {char}
+            </motion.span>
+          ))}
+        </div>
+
         <p className="tokenomics__subtitle">Distribution & Allocation</p>
 
         <div className="tokenomics__cards">
-          {metrics.map(({ label, value, image }, index) => (
-            <motion.div
-              key={label}
+          {metrics.map((metric, i) => (
+            <div
+              key={i}
               className="tokenomics__card"
-              initial={{ opacity: 0, y: 40 }}
-              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              data-scroll
+              data-scroll-speed={i % 2 === 0 ? 1 : 1.5}
             >
               <img
-                src={image}
-                alt={label}
+                src={metric.image}
+                alt={metric.label}
                 className="tokenomics__icon"
                 draggable={false}
               />
-              <div className="tokenomics__info">
-                <span className="tokenomics__label">{label}</span>
-                <span className="tokenomics__value">{value}</span>
-              </div>
-            </motion.div>
+              <span className="tokenomics__label">{metric.label}</span>
+              <span className="tokenomics__value">{metric.value}</span>
+            </div>
           ))}
         </div>
       </div>

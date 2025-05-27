@@ -1,26 +1,25 @@
-/* 1) Import Google Fonts (sempre no topo, numa linha só) */
+/* 1) Import Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&family=Permanent+Marker&family=Rock+Salt&family=UnifrakturCook&family=Special+Elite&family=Shadows+Into+Light&display=swap");
 
 /* 2) Variáveis globais */
 :root {
-  /* cores das seções */
   --bg-home:        #1e1e1e;
   --bg-whatis:      #15151a;
-  --bg-tokenomics:  #181818;; /* ✅ fundo escuro sólido sem clarão */
+  --bg-tokenomics:  #181818;
   --bg-community:   #1a1a28;
-  --bg-howTobuy: #1a1a28;
+  --bg-howTobuy:    #1a1a28;
 
   --text-color:     #ffffff;
 
-  /* fonts */
-  --font-base:      "Segoe UI", sans-serif;
-  --font-emo-title: "Creepster", cursive;
-  --font-emo-drip:  "Nosifer", cursive;
-  --font-emo-hand:  "Permanent Marker", cursive;
-  --font-emo-rock:  "Rock Salt", cursive;
-  --font-emo-gothic:"UnifrakturCook", serif;
-  --font-emo-type:  "Special Elite", monospace;
-  --font-emo-light: "Shadows Into Light", cursive;
+  /* fontes */
+  --font-base:        "Segoe UI", sans-serif;
+  --font-emo-title:   "Creepster", cursive;
+  --font-emo-drip:    "Nosifer", cursive;
+  --font-emo-hand:    "Permanent Marker", cursive;
+  --font-emo-rock:    "Rock Salt", cursive;
+  --font-emo-gothic:  "UnifrakturCook", serif;
+  --font-emo-type:    "Special Elite", monospace;
+  --font-emo-light:   "Shadows Into Light", cursive;
 
   /* botões */
   --btn-radius:               8px;
@@ -31,16 +30,18 @@
   --btn-secondary-text:       #ff007f;
   --btn-secondary-hover-bg:   #ff007f;
   --btn-secondary-hover-text: #ffffff;
+
+  --header-height: 4.5rem;
 }
 
-/* 3) Reset básico */
+/* 3) Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* 4) Tema global aplicado ao <body> */
+/* 4) Tema global */
 body {
   background-color: var(--bg-home);
   color: var(--text-color);
@@ -52,34 +53,55 @@ body {
 body.page-whatis {
   background-color: var(--bg-whatis);
 }
-
 body.page-community {
   background-color: var(--bg-community);
 }
-
 body.page-tokenomics {
-  background-color: var(--bg-tokenomics); /* ✅ corrigido para fundo sólido */
+  background-color: var(--bg-tokenomics);
 }
-
 body.page-howToBuy {
   background-color: var(--bg-howTobuy);
 }
 
-/* 6) Scroll suave para âncoras */
+/* 6) Scroll suave */
 html {
   scroll-behavior: smooth;
 }
 
-/* 7) Padrão para todas as sections */
+/* 7) Padrão de seção */
 .section {
-  padding: 8rem 1rem;
-  min-height: 100vh;
-  scroll-margin-top: 6rem;
+  padding: 4rem 1rem 6rem;
   position: relative;
   z-index: 0;
 }
 
-/* 8) @font-face locais */
+
+
+@media (min-width: 768px) {
+  .section {
+    padding: 6rem 2rem 8rem;
+  }
+}
+@media (min-width: 1024px) {
+  .section {
+    padding: 8rem 4rem 10rem;
+  }
+}
+
+/* 8) Scroll margin para evitar corte pelo header fixo */
+#tokenomics,
+#howToBuy {
+  scroll-margin-top: var(--header-height);
+}
+
+@media (min-width: 768px) {
+  #tokenomics,
+  #howToBuy {
+    scroll-margin-top: 5rem;
+  }
+}
+
+/* 9) Fontes locais */
 @font-face {
   font-family: "CursedCalvade";
   src: url("./assets/fonts/CursedCavalcade-xRxwm.ttf") format("truetype");
@@ -88,4 +110,15 @@ html {
 @font-face {
   font-family: "Saint";
   src: url("./assets/fonts/Saint-4ZJ4.ttf") format("truetype");
+}
+
+/* 10) Regras obrigatórias para locomotive-scroll */
+html,
+body {
+  height: 100%;
+  overflow: hidden; /* evita conflito com scroll nativo */
+}
+
+#scroll-container {
+  overflow: hidden;
 }

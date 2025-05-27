@@ -28,24 +28,20 @@ const steps = [
 ];
 
 const HowToBuy = () => {
-  const disableAnimation =
-    typeof window !== "undefined" && window.location.hash === "#howToBuy";
-
   return (
-    <motion.section
-      id="howToBuy"
-      className="section htb"
-      style={{ minHeight: "100vh" }} // 👈 garante altura mesmo com animation
-      initial={disableAnimation ? false : "hidden"}
-      whileInView="visible"
-      viewport={{ amount: 0.3 }}
-      variants={{
-        hidden: { opacity: 0, y: 50 },
-        visible: { opacity: 1, y: 0 },
-      }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-    >
-      <div className="htb__content">
+    <section className="section htb">
+      <motion.div
+        id="howToBuy"
+        className="htb__content"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ amount: 0.3 }}
+        variants={{
+          hidden: { opacity: 0, y: 40 },
+          visible: { opacity: 1, y: 0 },
+        }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
         <h2 className="htb__title">HOW TO BUY $EMO</h2>
         <p className="htb__subtitle">
           The path to despair is simple. Just follow the steps.
@@ -53,7 +49,14 @@ const HowToBuy = () => {
 
         <div className="htb__steps">
           {steps.map((step, index) => (
-            <div key={index} className={`htb__card htb__card--${index}`}>
+            <motion.div
+              key={index}
+              className="htb__card"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ delay: index * 0.2, duration: 0.6 }}
+              viewport={{ once: true }}
+            >
               <div className="htb__icon">
                 <img src={step.icon} alt={step.title} draggable={false} />
               </div>
@@ -62,11 +65,11 @@ const HowToBuy = () => {
                 <p className="htb__step-subtitle">{step.subtitle}</p>
                 <p className="htb__step-desc">{step.desc}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
-      </div>
-    </motion.section>
+      </motion.div>
+    </section>
   );
 };
 

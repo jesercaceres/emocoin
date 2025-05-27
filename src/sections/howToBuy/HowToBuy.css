@@ -1,14 +1,28 @@
 .htb {
-  padding: 10rem 2rem;
+  padding: 4rem 1rem 6rem;
   background: transparent;
   color: var(--text-color);
   text-align: center;
   font-family: var(--font-emo-drip);
 }
 
+@media (min-width: 768px) {
+  .htb {
+    padding: 6rem 2rem 8rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .htb {
+    padding: 8rem 4rem 10rem;
+  }
+}
+
 .htb__content {
-  max-width: 700px;
+  max-width: 1000px;
   margin: 0 auto;
+  text-align: center;
+  padding-top: 2rem; /* 🔥 garante espaçamento abaixo do header */
 }
 
 .htb__title {
@@ -37,7 +51,6 @@
   padding: 2.5rem 2rem;
   border-radius: var(--btn-radius);
   transition: all 0.3s ease;
-  cursor: default;
   text-align: left;
   box-shadow:
     0 0 10px rgba(255, 79, 161, 0.05),
