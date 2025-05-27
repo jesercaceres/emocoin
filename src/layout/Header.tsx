@@ -1,6 +1,6 @@
 // src/components/Header.tsx
 import React, { useState, useEffect } from "react";
-import logo from "../assets/images/emocoin.png";
+import logo from "../assets/images/headerImgs/emocoin.png";
 import "./header.css";
 
 const Header: React.FC = () => {
@@ -26,6 +26,7 @@ const Header: React.FC = () => {
         <a href="#hero" className="nav-item">Home</a>
         <a href="#whatis" className="nav-item">What is EmoCoin?</a>
         <a href="#tokenomics" className="nav-item">Tokenomics</a>
+        <a href= "#howToBuy" className="nav-item">How To Buy</a>
       </nav>
     </header>
   );

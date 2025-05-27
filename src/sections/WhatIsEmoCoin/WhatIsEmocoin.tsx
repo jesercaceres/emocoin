@@ -1,16 +1,18 @@
 import React, { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import "./WhatIsEmocoin.css";
-import emoMascot from "../../assets/images/emogirlNeon.png";
+import emoMascot from "../../assets/images/whatIsEmocoinImgs/emogirlNeon.png";
 
 const WhatIsEmocoin: React.FC = () => {
-  const ref = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const disableAnimation = typeof window !== "undefined" && window.location.hash === "#whatis";
 
   useEffect(() => {
     const body = document.body;
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.target === ref.current) {
+          if (entry.target === sectionRef.current) {
             if (entry.isIntersecting) {
               body.classList.add("page-whatis");
             } else {
@@ -22,48 +24,79 @@ const WhatIsEmocoin: React.FC = () => {
       { threshold: 0.5 }
     );
 
-    if (ref.current) observer.observe(ref.current);
+    if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
   return (
-    <section id="whatis" ref={ref} className="section whatis-container">
+    <motion.section
+      id="whatis"
+      ref={sectionRef}
+      className="section whatis-container"
+      initial={disableAnimation ? false : "hidden"}
+      whileInView="visible"
+      viewport={{ amount: 0.3 }}
+      variants={{
+        hidden: { opacity: 0, y: 15 },
+        visible: { opacity: 1, y: 0 },
+      }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
       <div className="whatis-text">
-        <h1 className="neon-sign">What is EmoCoin?</h1>
-        <h2 className="whatis-subtitle">
+        <motion.h1
+          className="neon-sign"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+        >
+          What is EmoCoin?
+        </motion.h1>
+
+        <motion.h2
+          className="whatis-subtitle"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.6 }}
+        >
           A peer-to-peer tokenized emotion network,
           <br />
           <span className="highlight">favored by broken hearts worldwide.</span>
-        </h2>
+        </motion.h2>
 
-        <p>
-          At its core, EmoCoin is the unapologetic memecoin born out of
-          heartache and glitter. It is an open-source peer-to-peer
-          cryptocurrency that uses blockchain technology to tokenize sadness,
-          poetry, and eyeliner.
-        </p>
-        <p>
-          EmoCoin represents a decentralized way to store emotional value
-          on-chain, validated by a decentralized network of people who have
-          cried to early 2000s playlists.
-        </p>
-        <p>
-          Beyond technology, EmoCoin is a movement—summarized in the{" "}
-          <a href="/manifesto" className="whatis-link">
-            Emo Manifesto
-          </a>
-          , and supported by an unapologetically emotional community just like
-          you.{" "}
-          <a href="/learn" className="whatis-link">
-            Learn more.
-          </a>
-        </p>
+        {[...Array(3)].map((_, i) => (
+          <motion.p
+            key={i}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 + i * 0.2, duration: 0.6 }}
+          >
+            {[
+              `At its core, EmoCoin is the unapologetic memecoin born out of heartache and glitter. It is an open-source peer-to-peer cryptocurrency that uses blockchain technology to tokenize sadness, poetry, and eyeliner.`,
+              `EmoCoin represents a decentralized way to store emotional value on-chain, validated by a decentralized network of people who have cried to early 2000s playlists.`,
+              <>
+                Beyond technology, EmoCoin is a movement—summarized in the{" "}
+                <a href="/manifesto" className="whatis-link">
+                  Emo Manifesto
+                </a>
+                , and supported by an unapologetically emotional community just like you.{" "}
+                <a href="/learn" className="whatis-link">
+                  Learn more.
+                </a>
+              </>,
+            ][i]}
+          </motion.p>
+        ))}
       </div>
 
-      <div className="whatis-image-placeholder">
+      <motion.div
+        className="whatis-image-placeholder"
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.5, duration: 0.6 }}
+      >
         <img src={emoMascot} alt="EmoCoin Mascot" className="whatis-image" />
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 };
 

@@ -1,11 +1,12 @@
 // src/components/Hero.tsx
 import React, { useEffect, useRef } from "react";
 import "./Hero.css";
-import emoboy from "../../assets/images/emocoin.png";
 import bear from "../../assets/images/heroimgs/bear.png";
 import banner2 from "../../assets/images/heroimgs/heart.png";
 import decoBottomLeft from "../../assets/images/heroimgs/guitar.png";
 import decoBottomRight from "../../assets/images/heroimgs/book.png";
+import emocoinLogo from "../../assets/images/heroimgs/emocoin.png";
+
 
 const Hero: React.FC = () => {
   const ref = useRef<HTMLElement>(null);
@@ -72,7 +73,7 @@ const Hero: React.FC = () => {
         <div className="hero-bubble">Such sadness. Much gains.</div>
 
         {/* Personagem com float */}
-        <img src={emoboy} alt="Emocoin Hero" className="hero-image" />
+        <img src={emocoinLogo} alt="Emocoin Hero" className="hero-image" />
       </div>
 
       {/* Scroll Indicator */}
