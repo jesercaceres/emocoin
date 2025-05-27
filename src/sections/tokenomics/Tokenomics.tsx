@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
 import "./Tokenomics.css";
 
 import SupplyImg from "../../assets/images/tokenomicsImgs/Supply.png";
@@ -29,24 +29,53 @@ const Tokenomics: React.FC = () => {
     );
 
     if (sectionRef.current) observer.observe(sectionRef.current);
+
+    // ⚙️ Força atualização do locomotive-scroll após renderização do título
+    setTimeout(() => {
+      try {
+        const scrollContainers = document.querySelectorAll("[data-scroll-container]");
+        if (scrollContainers.length > 0 && scrollContainers[0]['locomotive']) {
+          scrollContainers[0]['locomotive'].update();
+        }
+      } catch (err) {
+        console.warn("Locomotive update failed:", err);
+      }
+    }, 800);
+
     return () => observer.disconnect();
   }, []);
 
   return (
     <section className="section tokenomics" ref={sectionRef}>
       <div id="tokenomics" className="tokenomics__content" ref={ref}>
-        <h2 className="tokenomics__title">TOKENOMICS</h2>
+        <div
+          className="tokenomics__title"
+          aria-label="TOKENOMICS"
+          style={{ display: "flex", justifyContent: "center", gap: "0.2em" }}
+        >
+          {"TOKENOMICS".split("").map((char, i) => (
+            <motion.span
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.05, duration: 0.4 }}
+              viewport={{ once: true }}
+              style={{ display: "inline-block" }}
+            >
+              {char}
+            </motion.span>
+          ))}
+        </div>
+
         <p className="tokenomics__subtitle">Distribution & Allocation</p>
 
         <div className="tokenomics__cards">
           {metrics.map((metric, i) => (
-            <motion.div
+            <div
               key={i}
               className="tokenomics__card"
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: i * 0.15, duration: 0.5 }}
-              viewport={{ once: true }}
+              data-scroll
+              data-scroll-speed={i % 2 === 0 ? 1 : 1.5}
             >
               <img
                 src={metric.image}
@@ -56,7 +85,7 @@ const Tokenomics: React.FC = () => {
               />
               <span className="tokenomics__label">{metric.label}</span>
               <span className="tokenomics__value">{metric.value}</span>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

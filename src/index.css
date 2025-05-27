@@ -75,6 +75,8 @@ html {
   z-index: 0;
 }
 
+
+
 @media (min-width: 768px) {
   .section {
     padding: 6rem 2rem 8rem;
@@ -108,4 +110,15 @@ html {
 @font-face {
   font-family: "Saint";
   src: url("./assets/fonts/Saint-4ZJ4.ttf") format("truetype");
+}
+
+/* 10) Regras obrigatórias para locomotive-scroll */
+html,
+body {
+  height: 100%;
+  overflow: hidden; /* evita conflito com scroll nativo */
+}
+
+#scroll-container {
+  overflow: hidden;
 }
