@@ -34,8 +34,11 @@ const Tokenomics: React.FC = () => {
     setTimeout(() => {
       try {
         const scrollContainers = document.querySelectorAll("[data-scroll-container]");
-        if (scrollContainers.length > 0 && scrollContainers[0]['locomotive']) {
-          scrollContainers[0]['locomotive'].update();
+        if (
+          scrollContainers.length > 0 &&
+          (scrollContainers[0] as any)['locomotive']
+        ) {
+          (scrollContainers[0] as any)['locomotive'].update();
         }
       } catch (err) {
         console.warn("Locomotive update failed:", err);
