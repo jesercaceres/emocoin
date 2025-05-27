@@ -12,6 +12,7 @@
   "dependencies": {
     "@types/node": "^22.15.3",
     "framer-motion": "^12.12.2",
+    "locomotive-scroll": "^4.1.4",
     "meu-projeto-react": "file:",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
