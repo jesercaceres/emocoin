@@ -30,15 +30,11 @@ const Tokenomics: React.FC = () => {
 
     if (sectionRef.current) observer.observe(sectionRef.current);
 
-    // ⚙️ Força atualização do locomotive-scroll após renderização do título
     setTimeout(() => {
       try {
         const scrollContainers = document.querySelectorAll("[data-scroll-container]");
-        if (
-          scrollContainers.length > 0 &&
-          (scrollContainers[0] as any)['locomotive']
-        ) {
-          (scrollContainers[0] as any)['locomotive'].update();
+        if (scrollContainers.length > 0 && scrollContainers[0]['locomotive']) {
+          scrollContainers[0]['locomotive'].update();
         }
       } catch (err) {
         console.warn("Locomotive update failed:", err);
@@ -50,7 +46,12 @@ const Tokenomics: React.FC = () => {
 
   return (
     <section className="section tokenomics" ref={sectionRef}>
-      <div id="tokenomics" className="tokenomics__content" ref={ref}>
+      <div
+        id="tokenomics"
+        className="tokenomics__content"
+        ref={ref}
+        style={{ paddingTop: "80px" }} // 👈 aqui aplicamos o espaçamento igual à whatis
+      >
         <div
           className="tokenomics__title"
           aria-label="TOKENOMICS"

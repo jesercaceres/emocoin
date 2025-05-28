@@ -29,9 +29,8 @@ const steps = [
 
 const HowToBuy = () => {
   return (
-    <section className="section htb">
+    <section className="section htb" id="howToBuy">
       <motion.div
-        id="howToBuy"
         className="htb__content"
         initial="hidden"
         whileInView="visible"
@@ -42,7 +41,21 @@ const HowToBuy = () => {
         }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <h2 className="htb__title">HOW TO BUY $EMO</h2>
+        <div className="htb__title-wrapper">
+          {"HOW TO BUY $EMO".split("").map((char, i) => (
+            <motion.span
+              key={i}
+              className="htb__title-letter"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.05, duration: 0.4 }}
+              viewport={{ once: true }}
+            >
+              {char}
+            </motion.span>
+          ))}
+        </div>
+
         <p className="htb__subtitle">
           The path to despair is simple. Just follow the steps.
         </p>
@@ -52,6 +65,8 @@ const HowToBuy = () => {
             <motion.div
               key={index}
               className="htb__card"
+              data-scroll
+              data-scroll-speed={index % 2 === 0 ? 1 : 1.5}
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ delay: index * 0.2, duration: 0.6 }}
