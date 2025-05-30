@@ -1,18 +1,18 @@
 .tokenomics {
-  padding: 4rem 1rem 6rem;
+  padding: 2rem 1rem 6rem;
   color: #eee;
   background: transparent;
 }
 
 @media (min-width: 768px) {
   .tokenomics {
-    padding: 6rem 2rem 8rem;
+    padding: 3rem 2rem 8rem;
   }
 }
 
 @media (min-width: 1024px) {
   .tokenomics {
-    padding: 8rem 4rem 10rem;
+    padding: 4rem 4rem 10rem;
   }
 }
 
@@ -20,6 +20,8 @@
   max-width: 1000px;
   margin: 0 auto;
   text-align: center;
+  scroll-margin-top: 80px;
+  padding-top: 3.5rem; /* ✅ padding substitui margin-top no título */
 }
 
 .tokenomics__title {
@@ -27,7 +29,39 @@
   font-size: 3rem;
   margin-bottom: 0.5rem;
   color: #ff4fa1;
+  display: flex;
+  justify-content: center;
+  gap: 0.2em;
+  flex-wrap: wrap;            /* permite quebra de linha */
+  word-break: break-word;     /* quebra palavras se necessário */
+  overflow-wrap: break-word;  /* reforça quebra segura */
+  line-height: 1.2;
 }
+
+@media (max-width: 768px) {
+  .tokenomics__title {
+    font-size: 2.4rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .tokenomics__title {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .tokenomics__title {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 300px) {
+  .tokenomics__title {
+    font-size: 1.1rem;
+  }
+}
+
 
 .tokenomics__subtitle {
   font-family: var(--font-emo-type);

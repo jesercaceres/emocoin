@@ -17,7 +17,7 @@ const metrics = [
 
 const Tokenomics: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.5 });
+  const [ref] = useInView({ triggerOnce: false, threshold: 0.5 });
 
   useEffect(() => {
     const body = document.body;
@@ -50,11 +50,14 @@ const Tokenomics: React.FC = () => {
 
   return (
     <section className="section tokenomics" ref={sectionRef}>
-      <div id="tokenomics" className="tokenomics__content" ref={ref}>
+      <div
+        id="tokenomics"
+        className="tokenomics__content"
+        ref={ref}
+      >
         <div
           className="tokenomics__title"
           aria-label="TOKENOMICS"
-          style={{ display: "flex", justifyContent: "center", gap: "0.2em" }}
         >
           {"TOKENOMICS".split("").map((char, i) => (
             <motion.span
