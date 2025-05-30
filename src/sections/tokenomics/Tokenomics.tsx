@@ -30,7 +30,6 @@ const Tokenomics: React.FC = () => {
 
     if (sectionRef.current) observer.observe(sectionRef.current);
 
-    // ⚙️ Força atualização do locomotive-scroll após renderização do título
     setTimeout(() => {
       try {
         const scrollContainers = document.querySelectorAll("[data-scroll-container]");
@@ -65,7 +64,7 @@ const Tokenomics: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.05, duration: 0.4 }}
-              viewport={{ once: true }}
+              viewport={{ amount: 0.3 }} // sempre que entrar no viewport
               style={{ display: "inline-block" }}
             >
               {char}
