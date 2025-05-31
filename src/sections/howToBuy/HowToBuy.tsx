@@ -36,20 +36,23 @@ const HowToBuy = () => {
         whileInView="visible"
         viewport={{ amount: 0.3 }}
         variants={{
-          hidden: { opacity: 0, y: 40 },
-          visible: { opacity: 1, y: 0 },
+          hidden: {},
+          visible: {},
         }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
       >
         <div className="htb__title-wrapper">
           {"HOW TO BUY $EMO".split("").map((char, i) => (
             <motion.span
               key={i}
               className="htb__title-letter"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.05, duration: 0.4 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{
+                delay: i * 0.04,
+                duration: 0.35,
+                ease: "easeOut",
+              }}
+              viewport={{ once: false }}
             >
               {char}
             </motion.span>
@@ -65,12 +68,21 @@ const HowToBuy = () => {
             <motion.div
               key={index}
               className="htb__card"
-              data-scroll
-              data-scroll-speed={index % 2 === 0 ? 1 : 1.5}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: index * 0.2, duration: 0.6 }}
-              viewport={{ once: true }}
+              initial={{
+                opacity: 0,
+                y: 40,
+                scale: 0.95,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                scale: 1,
+              }}
+              transition={{
+                delay: index * 0.2,
+                duration: 0.6,
+              }}
+              viewport={{ once: false }}
             >
               <div className="htb__icon">
                 <img src={step.icon} alt={step.title} draggable={false} />
