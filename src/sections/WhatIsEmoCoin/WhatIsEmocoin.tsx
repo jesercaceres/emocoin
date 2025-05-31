@@ -35,19 +35,19 @@ const WhatIsEmocoin: React.FC = () => {
       className="section whatis-container"
       initial={disableAnimation ? false : "hidden"}
       whileInView="visible"
-      viewport={{ amount: 0.3 }}
+      viewport={{ amount: 0.1 }}
       variants={{
         hidden: { opacity: 0, y: 15 },
         visible: { opacity: 1, y: 0 },
       }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
     >
       <div className="whatis-text">
         <motion.h1
           className="neon-sign"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
+          transition={{ duration: 0.5 }}
         >
           What is EmoCoin?
         </motion.h1>
@@ -56,7 +56,7 @@ const WhatIsEmocoin: React.FC = () => {
           className="whatis-subtitle"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.6 }}
+          transition={{ duration: 0.5 }}
         >
           A peer-to-peer tokenized emotion network,
           <br />
@@ -68,7 +68,7 @@ const WhatIsEmocoin: React.FC = () => {
             key={i}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 + i * 0.2, duration: 0.6 }}
+            transition={{ delay: i * 0.05, duration: 0.5 }}
           >
             {[
               `At its core, EmoCoin is the unapologetic memecoin born out of heartache and glitter. It is an open-source peer-to-peer cryptocurrency that uses blockchain technology to tokenize sadness, poetry, and eyeliner.`,
@@ -92,7 +92,7 @@ const WhatIsEmocoin: React.FC = () => {
         className="whatis-image-placeholder"
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.5, duration: 0.6 }}
+        transition={{ duration: 0.5 }}
       >
         <img src={emoMascot} alt="EmoCoin Mascot" className="whatis-image" />
       </motion.div>
@@ -101,3 +101,4 @@ const WhatIsEmocoin: React.FC = () => {
 };
 
 export default WhatIsEmocoin;
+  

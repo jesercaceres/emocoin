@@ -17,7 +17,7 @@ const metrics = [
 
 const Tokenomics: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.5 });
+  const [ref] = useInView({ triggerOnce: false, threshold: 0.5 });
 
   useEffect(() => {
     const body = document.body;
@@ -50,12 +50,14 @@ const Tokenomics: React.FC = () => {
         id="tokenomics"
         className="tokenomics__content"
         ref={ref}
+<<<<<<< HEAD
         style={{ paddingTop: "80px" }} // 👈 aqui aplicamos o espaçamento igual à whatis
+=======
+>>>>>>> 8c121b912f8eca6ba5e6732e95f2bb9cd9302e3d
       >
         <div
           className="tokenomics__title"
           aria-label="TOKENOMICS"
-          style={{ display: "flex", justifyContent: "center", gap: "0.2em" }}
         >
           {"TOKENOMICS".split("").map((char, i) => (
             <motion.span
@@ -63,7 +65,7 @@ const Tokenomics: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.05, duration: 0.4 }}
-              viewport={{ once: true }}
+              viewport={{ amount: 0.3 }} // sempre que entrar no viewport
               style={{ display: "inline-block" }}
             >
               {char}
