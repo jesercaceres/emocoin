@@ -50,10 +50,6 @@ const Tokenomics: React.FC = () => {
         id="tokenomics"
         className="tokenomics__content"
         ref={ref}
-<<<<<<< HEAD
-        style={{ paddingTop: "80px" }} // 👈 aqui aplicamos o espaçamento igual à whatis
-=======
->>>>>>> 8c121b912f8eca6ba5e6732e95f2bb9cd9302e3d
       >
         <div
           className="tokenomics__title"
