@@ -3,11 +3,11 @@
 
 /* 2) Variáveis globais */
 :root {
-  --bg-home:        #1e1e1e;
+  --bg-home:        #181818;
   --bg-whatis:      #15151a;
   --bg-tokenomics:  #181818;
   --bg-community:   #1a1a28;
-  --bg-howTobuy:    #1a1a28;
+  --bg-howTobuy:   #181818;
 
   --text-color:     #ffffff;
 

@@ -1,0 +1,68 @@
+/* DividerTokenomicsHowToBuy.css – versão sem as “listras” horizontais */
+@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+
+/* -------- palette -------- */
+:root{
+  --bg-outer:#181818;
+  --bg-inner:#0b020c;
+  --pink-neon:#ff9cff;
+  --purple-neon:#b400ff;
+}
+
+/* -------- container -------- */
+.divider-tokenomics{
+  height:300px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+
+  /* vinheta + gradiente central */
+  background:
+      radial-gradient(ellipse at center,
+        var(--bg-inner) 3%,
+        var(--bg-inner) 10%,
+        transparent 75%),
+      var(--bg-outer);
+
+  box-shadow:
+      inset 0 80px 80px -60px var(--bg-outer),
+      inset 0 -80px 80px -60px var(--bg-outer);
+}
+
+/* -------- grain (sem scan-lines) -------- */
+.divider-tokenomics::before{
+  content:"";
+  position:absolute; inset:0;
+  pointer-events:none;
+  mix-blend-mode:screen;
+
+  /* apenas ruído estático */
+  background:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAABGklEQVR4nM3TTUsCURTH8Y+bgOIKgjFQg+hCSpoF7ELlDPYKqN8CBpyAYQCND0UFQXQhAO0YBF3oSptgQ3L4kKjYi71Tvy/rLegTe38zrvnDPnc87/nPecwAt1jDCNiB+wziOIXnEOY1wmIDiNAn8YYk98nrxBJkLuMP1gjeIB7zPG6RDEbj++IDDE43gkclwurUM4f5xjuNHYLzHPpCDh35zjaboFJjXBeplxXi8Ry8A3kI+n8cOIb476cl/sJtE8YzWiaZzeKwWGVteRH8DdiKSoErQNsgS2iPWxU4hMQ5wHLkKVpbRxLEa6V4gZ92C9EHt4jbWM4lzHOEp+JYqj2PmOysF6nl6hfDHJZv8gM6PXviH3MOursd8Cj8R9Hyb7h6xjgIhOshR7C3uK4wzYW+p/Q9ikQ+4z14AAAAASUVORK5CYII=")
+            0 0/140px;
+  opacity:.25;
+  animation:grainMove 6s steps(10) infinite;
+}
+
+/* move o ruído um pouco para dar vida */
+@keyframes grainMove{
+  0%  {background-position:0 0;}
+  100%{background-position:-200px 100px;}
+}
+
+/* -------- texto -------- */
+.divider-text{
+  font-family:'Creepster',cursive;
+  color:var(--pink-neon);
+  font-size:1.25rem;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  text-shadow:0 0 6px var(--purple-neon), 0 0 12px var(--purple-neon);
+  animation:textGlow 3s ease-in-out infinite;
+}
+
+@keyframes textGlow{
+  0%,100%{filter:brightness(1);}
+  50%   {filter:brightness(1.4);}
+}

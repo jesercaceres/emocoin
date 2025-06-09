@@ -4,6 +4,7 @@ import Tokenomics from "./sections/tokenomics/Tokenomics";
 import Hero from "./sections/hero/Hero";
 import Header from "./layout/Header";
 import WhatIsEmocoin from "./sections/WhatIsEmoCoin/WhatIsEmocoin";
+import DividerTokenomicsHowToBuy from "./components/divider/DividerTokenomicsHowToBuy";
 import HowToBuy from "./sections/howToBuy/HowToBuy";
 
 const App: React.FC = () => {
@@ -16,6 +17,7 @@ const App: React.FC = () => {
         <Hero />
         <WhatIsEmocoin />
         <Tokenomics />
+        <DividerTokenomicsHowToBuy />
         <HowToBuy />
       </div>
     </>
