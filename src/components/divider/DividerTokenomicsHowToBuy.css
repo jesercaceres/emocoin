@@ -1,15 +1,15 @@
-/* DividerTokenomicsHowToBuy.css – versão sem as “listras” horizontais */
+/* DividerTokenomicsHowToBuy.css ─ TV static visível (chuvisco + listras) */
 @import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
 
-/* -------- palette -------- */
+/* ---------- palette ---------- */
 :root{
   --bg-outer:#181818;
-  --bg-inner:#0b020c;
+  --bg-inner:#4b4a4b;
   --pink-neon:#ff9cff;
   --purple-neon:#b400ff;
 }
 
-/* -------- container -------- */
+/* ---------- container ---------- */
 .divider-tokenomics{
   height:300px;
   display:flex;
@@ -20,45 +20,72 @@
 
   /* vinheta + gradiente central */
   background:
-      radial-gradient(ellipse at center,
-        var(--bg-inner) 3%,
-        var(--bg-inner) 10%,
-        transparent 75%),
-      var(--bg-outer);
+    radial-gradient(ellipse at center,
+      var(--bg-inner) 3%,
+      var(--bg-inner) 10%,
+      transparent 75%),
+    var(--bg-outer);
 
   box-shadow:
-      inset 0 80px 80px -60px var(--bg-outer),
-      inset 0 -80px 80px -60px var(--bg-outer);
+    inset 0 80px 80px -60px var(--bg-outer),
+    inset 0 -80px 80px -60px var(--bg-outer);
 }
 
-/* -------- grain (sem scan-lines) -------- */
+/* ---------- grain (chuvisco) ---------- */
 .divider-tokenomics::before{
   content:"";
   position:absolute; inset:0;
   pointer-events:none;
-  mix-blend-mode:screen;
+  z-index:1;
 
-  /* apenas ruído estático */
+  mix-blend-mode:screen;
+  /* PNG tiny-noise embutido */
   background:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAABGklEQVR4nM3TTUsCURTH8Y+bgOIKgjFQg+hCSpoF7ELlDPYKqN8CBpyAYQCND0UFQXQhAO0YBF3oSptgQ3L4kKjYi71Tvy/rLegTe38zrvnDPnc87/nPecwAt1jDCNiB+wziOIXnEOY1wmIDiNAn8YYk98nrxBJkLuMP1gjeIB7zPG6RDEbj++IDDE43gkclwurUM4f5xjuNHYLzHPpCDh35zjaboFJjXBeplxXi8Ry8A3kI+n8cOIb476cl/sJtE8YzWiaZzeKwWGVteRH8DdiKSoErQNsgS2iPWxU4hMQ5wHLkKVpbRxLEa6V4gZ92C9EHt4jbWM4lzHOEp+JYqj2PmOysF6nl6hfDHJZv8gM6PXviH3MOursd8Cj8R9Hyb7h6xjgIhOshR7C3uK4wzYW+p/Q9ikQ+4z14AAAAASUVORK5CYII=")
-            0 0/140px;
-  opacity:.25;
-  animation:grainMove 6s steps(10) infinite;
+          0 0/60px;        /* tamanho menor → grão maior/visível */
+  opacity:.45;            /* força do chuvisco */
+  animation:grainMove 1s steps(25) infinite;
 }
 
-/* move o ruído um pouco para dar vida */
 @keyframes grainMove{
   0%  {background-position:0 0;}
-  100%{background-position:-200px 100px;}
+  100%{background-position:-120px 60px;}
 }
 
-/* -------- texto -------- */
+/* ---------- scan-lines ---------- */
+.divider-tokenomics::after{
+  content:"";
+  position:absolute; inset:0;
+  pointer-events:none;
+  z-index:1;
+
+  /* 1 px linha + 1 px gap → faixa de 2 px */
+  background:repeating-linear-gradient(
+    0deg,
+    transparent 0 1px,
+    rgba(0, 0, 0, 0.15) 1px 2px
+  );
+  mix-blend-mode:overlay;
+  opacity:.4;
+  animation:scanLines 1s linear infinite;
+}
+
+@keyframes scanLines{
+  from{transform:translateY(0);}
+  to  {transform:translateY(2px);}  /* desloca exatamente 1 faixa */
+}
+
+/* ---------- texto ---------- */
 .divider-text{
+  position:relative; z-index:2;
+
   font-family:'Creepster',cursive;
   color:var(--pink-neon);
   font-size:1.25rem;
   text-transform:uppercase;
   letter-spacing:2px;
-  text-shadow:0 0 6px var(--purple-neon), 0 0 12px var(--purple-neon);
+  text-shadow:
+    0 0 6px  var(--purple-neon),
+    0 0 12px var(--purple-neon);
   animation:textGlow 3s ease-in-out infinite;
 }
 
