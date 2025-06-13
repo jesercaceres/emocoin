@@ -17,7 +17,6 @@ const App: React.FC = () => {
         <Hero />
         <WhatIsEmocoin />
         <Tokenomics />
-        <DividerTokenomicsHowToBuy />
         <HowToBuy />
       </div>
     </>

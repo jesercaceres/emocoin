@@ -1,98 +1,61 @@
-import React, { useEffect, useRef } from "react";
-import { useInView } from "react-intersection-observer";
-import { motion } from "framer-motion";
-import "./Tokenomics.css";
+import React from 'react';
+import { Fade } from 'react-awesome-reveal';
+import './tokenomics.css';
 
-import SupplyImg from "../../assets/images/tokenomicsImgs/Supply.png";
-import CirculatingSupplyImg from "../../assets/images/tokenomicsImgs/CirculatingSupply (2).png";
-import TeamAllocationImg from "../../assets/images/tokenomicsImgs/TeamAllocation (1).png";
-import CommunityPoolImg from "../../assets/images/tokenomicsImgs/pool (1).png";
-
+/* ------------------------------------------------------------------ */
+/* Dados de demonstração                                              */
 const metrics = [
-  { label: "Total Supply", value: "1 000 000", image: SupplyImg },
-  { label: "Circulating Supply", value: "500 000", image: CirculatingSupplyImg },
-  { label: "Team Allocation", value: "10%", image: TeamAllocationImg },
-  { label: "Community Pool", value: "20%", image: CommunityPoolImg },
+  { label: 'Total Supply',       value: '1 000 000' },
+  { label: 'Circulating Supply', value: '500 000'   },
+  { label: 'Team Allocation',    value: '10 %'      },
+  { label: 'Community Pool',     value: '20 %'      },
 ];
 
-const Tokenomics: React.FC = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [ref] = useInView({ triggerOnce: false, threshold: 0.5 });
-
-  useEffect(() => {
-    const body = document.body;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        body.classList.toggle("page-tokenomics", entry.isIntersecting);
-      },
-      { threshold: 0.5 }
-    );
-
-    if (sectionRef.current) observer.observe(sectionRef.current);
-
-    setTimeout(() => {
-      try {
-        const scrollContainers = document.querySelectorAll("[data-scroll-container]");
-        if (scrollContainers.length > 0 && scrollContainers[0]['locomotive']) {
-          scrollContainers[0]['locomotive'].update();
-        }
-      } catch (err) {
-        console.warn("Locomotive update failed:", err);
-      }
-    }, 800);
-
-    return () => observer.disconnect();
-  }, []);
-
+/* ------------------------------------------------------------------ */
+export default function Tokenomics() {
   return (
-    <section className="section tokenomics" ref={sectionRef}>
-      <div
-        id="tokenomics"
-        className="tokenomics__content"
-        ref={ref}
-      >
-        <div
-          className="tokenomics__title"
-          aria-label="TOKENOMICS"
+    <section id='tokenomics' className='tokenomics'>
+      {/* camadas de fundo */}
+      <div className='bkg noise'></div>
+      <div className='bkg dots'></div>
+      <div className='bkg glitter'></div>
+
+      <div className='container'>
+        {/* Título com animação via react-awesome-reveal */}
+        <Fade
+          triggerOnce        /* anima apenas na 1ª vez que entra na viewport */
+          cascade            /* anima cada filho de .emo-title em sequência  */
+          damping={0.08}     /* atraso entre letras                          */
+          direction='up'     /* “slide-up + fade”                            */
         >
-          {"TOKENOMICS".split("").map((char, i) => (
-            <motion.span
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.05, duration: 0.4 }}
-              viewport={{ amount: 0.3 }} // sempre que entrar no viewport
-              style={{ display: "inline-block" }}
-            >
-              {char}
-            </motion.span>
-          ))}
-        </div>
+          <h2 className='emo-title' aria-label='TOKENOMICS'>
+            {'TOKENOMICS'.split('').map((c, i) => (
+              <span key={i}>{c}</span>
+            ))}
+          </h2>
+        </Fade>
 
-        <p className="tokenomics__subtitle">Distribution & Allocation</p>
+        <p className='tk-sub'>Distribution&nbsp;&amp;&nbsp;Allocation</p>
 
-        <div className="tokenomics__cards">
-          {metrics.map((metric, i) => (
-            <div
-              key={i}
-              className="tokenomics__card"
-              data-scroll
-              data-scroll-speed={i % 2 === 0 ? 1 : 1.5}
-            >
-              <img
-                src={metric.image}
-                alt={metric.label}
-                className="tokenomics__icon"
-                draggable={false}
-              />
-              <span className="tokenomics__label">{metric.label}</span>
-              <span className="tokenomics__value">{metric.value}</span>
+        {/* Grid de cards (hover CSS) */}
+        <div className='emo-grid'>
+          {metrics.map((m, i) => (
+            <div key={i} className='emo-card'>
+              <svg className='emo-icon' viewBox='0 0 100 100'>
+                <circle cx='50' cy='50' r='45'
+                        fill='var(--accent-pink)' opacity='.18' />
+                <path d='M30 60 L50 30 L70 60 Z'
+                      fill='var(--accent-pink)' />
+              </svg>
+
+              <span className='emo-label'>{m.label}</span>
+              <span className='emo-value'>{m.value}</span>
+
+              <span className='emo-sticker' />
             </div>
           ))}
         </div>
       </div>
     </section>
   );
-};
-
-export default Tokenomics;
+}
