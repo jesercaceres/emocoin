@@ -4,7 +4,7 @@ import "./HowToBuy.css";
 
 import metamaskIcon from "../../assets/images/howToBuyImgs/metamaskIcon.png";
 import moneyBagIcon from "../../assets/images/howToBuyImgs/moneyBagIcon.png";
-import swapIcon     from "../../assets/images/howToBuyImgs/swapIcon.png";
+import swapIcon from "../../assets/images/howToBuyImgs/swapIcon.png";
 
 const steps = [
   {
@@ -32,32 +32,32 @@ const HowToBuy: React.FC = () => {
 
   return (
     <section className="section htb" id="howToBuy" ref={sectionRef}>
+      {/* Partículas exclusivas desta seção */}
+      <div className="htb-bkg htb-dots"></div>
+      
+
       <motion.div
         className="htb__content"
         initial="hidden"
         whileInView="visible"
         viewport={{ amount: 0.3 }}
       >
-        {/* ---------- título ---------- */}
         <div className="htb__title-wrapper">
           {"HOW TO BUY $EMO".split("").map((ch, i) => (
             <motion.span
               key={i}
               className="htb__title-letter"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: i * 0.04, duration: 0.35, ease: "easeOut" }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.04, duration: 0.3, ease: "easeOut" }}
             >
               {ch}
             </motion.span>
           ))}
         </div>
 
-        <p className="htb__subtitle">
-          The path to despair is simple. Just follow the steps.
-        </p>
+        <p className="htb__subtitle">The path to despair is simple. Just follow the steps.</p>
 
-        {/* ---------- cards ---------- */}
         <div className="htb__steps">
           {steps.map((s, idx) => (
             <motion.div
@@ -65,7 +65,8 @@ const HowToBuy: React.FC = () => {
               className="htb__card"
               initial={{ opacity: 0, y: 40, scale: 0.95 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ delay: idx * 0.2, duration: 0.6 }}
+              transition={{ delay: idx * 0.2, duration: 0.6, ease: "easeOut" }}
+              whileHover={{ y: -6, transition: { duration: 0.2, ease: "easeOut" } }}
             >
               <div className="htb__icon">
                 <img src={s.icon} alt={s.title} draggable={false} />
@@ -78,6 +79,8 @@ const HowToBuy: React.FC = () => {
             </motion.div>
           ))}
         </div>
+
+        <p className="htb__final-msg">Easy, right? Now go... drown in it.</p>
       </motion.div>
     </section>
   );

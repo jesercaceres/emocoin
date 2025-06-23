@@ -47,14 +47,7 @@ body {
   inset: 0;
   pointer-events: none;
 }
-.bkg.noise {
-  z-index: -3;
-  background-image: repeating-linear-gradient(
-    45deg,
-    rgba(255, 255, 255, 0.02) 0 2px,
-    transparent 2px 4px
-  );
-}
+
 .bkg.dots {
   z-index: -2;
   background: radial-gradient(
