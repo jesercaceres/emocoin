@@ -1,34 +1,39 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import "./HowToBuy.css";
 
 import metamaskIcon from "../../assets/images/howToBuyImgs/metamaskIcon.png";
 import moneyBagIcon from "../../assets/images/howToBuyImgs/moneyBagIcon.png";
 import swapIcon from "../../assets/images/howToBuyImgs/swapIcon.png";
+import { PowerGlitch } from "powerglitch";
 
 const steps = [
   {
     icon: metamaskIcon,
     title: "Get a Wallet",
     subtitle: "Because even sadness needs a safe place.",
-    desc: "Install MetaMask or any wallet compatible with Ethereum or BNB."
+    desc: "Install MetaMask or any wallet compatible with Ethereum or BNB.",
   },
   {
     icon: moneyBagIcon,
     title: "Buy ETH or BNB",
     subtitle: "Every tear has its price.",
-    desc: "Use Binance or Coinbase to purchase ETH/BNB and send it to your wallet."
+    desc: "Use Binance or Coinbase to purchase ETH/BNB and send it to your wallet.",
   },
   {
     icon: swapIcon,
     title: "Swap for $EMO",
     subtitle: "Now convert pain into chain.",
-    desc: "Use Uniswap or PancakeSwap to trade ETH/BNB for $EMO."
-  }
+    desc: "Use Uniswap or PancakeSwap to trade ETH/BNB for $EMO.",
+  },
 ];
 
 const HowToBuy: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
+
+    useEffect(() => {
+    PowerGlitch.glitch(".htb__final-msg");
+  }, []);
 
   return (
     <section className="section htb" id="howToBuy" ref={sectionRef}>
@@ -56,7 +61,9 @@ const HowToBuy: React.FC = () => {
           ))}
         </div>
 
-        <p className="htb__subtitle">The path to despair is simple. Just follow the steps.</p>
+        <p className="htb__subtitle">
+          The path to despair is simple. Just follow the steps.
+        </p>
 
         <div className="htb__steps">
           {steps.map((s, idx) => (
@@ -66,7 +73,10 @@ const HowToBuy: React.FC = () => {
               initial={{ opacity: 0, y: 40, scale: 0.95 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ delay: idx * 0.2, duration: 0.6, ease: "easeOut" }}
-              whileHover={{ y: -6, transition: { duration: 0.2, ease: "easeOut" } }}
+              whileHover={{
+                y: -6,
+                transition: { duration: 0.2, ease: "easeOut" },
+              }}
             >
               <div className="htb__icon">
                 <img src={s.icon} alt={s.title} draggable={false} />
