@@ -5,6 +5,7 @@ import { locoInstance } from "../hooks/useLocoScroll";
 
 const Header: React.FC = () => {
   const [isShrunk, setIsShrunk] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,8 +16,12 @@ const Header: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, selector: string) => {
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    selector: string
+  ) => {
     e.preventDefault();
+    setIsMenuOpen(false);
 
     if (locoInstance) {
       locoInstance.scrollTo(selector, {
@@ -29,16 +34,29 @@ const Header: React.FC = () => {
 
   return (
     <header className={`header ${isShrunk ? "shrink" : ""}`}>
-      <div className="header-left">
-        <img src={logo} alt="EmoCoin logo" className="logo" />
-        <h1 className="title">EmoCoin</h1>
+      <div className="header-inner">
+        <div className="header-left">
+          <img src={logo} alt="EmoCoin logo" className="logo" />
+          <h1 className="title">EmoCoin</h1>
+        </div>
+
+        <button
+          className="menu-toggle"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Toggle navigation"
+        >
+          <span className="hamburger" />
+          <span className="hamburger" />
+          <span className="hamburger" />
+        </button>
+
+        <nav className={`nav ${isMenuOpen ? "open" : ""}`}>
+          <a href="#hero" onClick={(e) => handleNavClick(e, "#hero")}>Home</a>
+          <a href="#whatis" onClick={(e) => handleNavClick(e, "#whatis")}>What is EmoCoin?</a>
+          <a href="#tokenomics" onClick={(e) => handleNavClick(e, "#tokenomics")}>Tokenomics</a>
+          <a href="#howToBuy" onClick={(e) => handleNavClick(e, "#howToBuy")}>How To Buy</a>
+        </nav>
       </div>
-      <nav className="nav">
-        <a href="#hero" className="nav-item" onClick={(e) => handleNavClick(e, "#hero")}>Home</a>
-        <a href="#whatis" className="nav-item" onClick={(e) => handleNavClick(e, "#whatis")}>What is EmoCoin?</a>
-        <a href="#tokenomics" className="nav-item" onClick={(e) => handleNavClick(e, "#tokenomics")}>Tokenomics</a>
-        <a href="#howToBuy" className="nav-item" onClick={(e) => handleNavClick(e, "#howToBuy")}>How To Buy</a>
-      </nav>
     </header>
   );
 };

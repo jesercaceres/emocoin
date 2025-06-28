@@ -8,37 +8,25 @@
   width: 100%;
   background-color: #1a1a1a;
   color: #fff;
-  padding: 0.3rem 1rem;                    /* estado normal */
+  padding: 0.3rem 1rem;
   border-bottom: 1px solid #333;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   transition: padding 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
   z-index: 1000;
 }
 
 .header.shrink {
-  padding: 0 1rem;                        /* altura mínima ao scroll */
+  padding: 0 1rem;
   background-color: rgba(26, 26, 26, 0.95);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* Links de navegação */
-.header a {
-  color: var(--text-color);
-  text-decoration: none;
-  padding: 0.4rem 0.6rem;
-  transition: color 0.2s ease, background-color 0.2s ease;
-  border-radius: 4px;
+/* Container flexível para logo, botão e nav */
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
-
-.header a:hover {
-  color: var(--btn-primary-text);
-  background-color: var(--btn-primary-bg);
-}
-
-.header a:visited { color: var(--text-color); }
-.header a:active  { color: var(--btn-primary-hover); }
 
 /* Logo e título */
 .header-left {
@@ -48,7 +36,7 @@
 }
 
 .header.shrink .header-left {
-  transform: scale(0.90);                  /* encolhimento mais perceptível */
+  transform: scale(0.90);
 }
 
 .logo {
@@ -59,7 +47,7 @@
 }
 
 .header.shrink .logo {
-  width: 42px;     /* redução adicional ao scroll */
+  width: 42px;
   height: 42px;
 }
 
@@ -72,39 +60,109 @@
 }
 
 .header.shrink .title {
-  font-size: 1.3rem; /* fonte menor ao encolher */
+  font-size: 1.3rem;
 }
 
 /* Navegação principal */
 .nav {
   display: flex;
   gap: 1rem;
-  margin-right: 6rem;
   font-family: "Saint", sans-serif;
   transition: gap 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
 }
 
+/* Alinha .nav à direita no desktop */
+@media (min-width: 769px) {
+  .nav {
+    margin-left: auto;
+  }
+}
+
 .header.shrink .nav {
-  gap: 0.6rem;       /* gap mais apertado */
-  transform: scale(0.85);  /* nav também encolhe */
+  gap: 0.6rem;
+  transform: scale(0.85);
   opacity: 0.85;
 }
 
-/* Responsividade para telas menores */
+/* Links de navegação */
+.nav a {
+  color: var(--text-color);
+  text-decoration: none;
+  padding: 0.4rem 0.6rem;
+  transition: color 0.2s ease, background-color 0.2s ease;
+  border-radius: 4px;
+}
+
+.nav a:hover {
+  color: var(--btn-primary-text);
+  background-color: var(--btn-primary-bg);
+}
+
+.nav a:visited {
+  color: var(--text-color);
+}
+.nav a:active {
+  color: var(--btn-primary-hover);
+}
+
+/* Botão sanduíche (hamburger) */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+.hamburger {
+  height: 3px;
+  width: 100%;
+  background-color: white;
+  border-radius: 2px;
+}
+
+/* Responsividade: layout mobile */
 @media (max-width: 768px) {
   .header {
     flex-direction: column;
-    padding: 0.3rem 1rem;
+    align-items: stretch;
+    padding-inline: 1rem;
   }
 
-  .header-left {
-    margin-bottom: 0.8rem;
+  .header-inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .menu-toggle {
+    display: flex;
   }
 
   .nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
     flex-direction: column;
-    gap: 0.8rem;
-    margin-right: 0;
+    background-color: #1a1a1a;
+    gap: 1rem;
+    padding: 1rem;
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 100;
+  }
+
+  .nav.open {
+    display: flex;
+    opacity: 1;
+    pointer-events: auto;
   }
 
   .logo {
@@ -115,15 +173,28 @@
   .title {
     font-size: 1.4rem;
   }
+
+  .header.shrink .logo {
+    width: 36px;
+    height: 36px;
+  }
+
+  .header.shrink .title {
+    font-size: 1.2rem;
+  }
 }
 
-/* Responsividade para telas muito pequenas */
+/* Telas muito pequenas */
 @media (max-width: 480px) {
   .title {
     font-size: 1.2rem;
   }
+
   .logo {
     width: 36px;
     height: 36px;
   }
 }
+
+
+
