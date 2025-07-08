@@ -39,9 +39,11 @@
   text-shadow: 0 0 6px #000;
   margin-bottom: 1.5rem;
   font-size: clamp(1.6rem, 6vw, 3rem);
-  max-width: 90vw;
   margin-inline: auto;
   line-height: 1.2;
+  word-break: break-word;
+  max-width: 100%;
+  overflow-wrap: break-word;
 }
 
 .htb__title-letter {
@@ -186,9 +188,9 @@
 .htb-dots {
   z-index: -2;
   background:
-    radial-gradient(circle, rgba(255, 79, 161, 0.2) 1px, transparent 1px),
-    radial-gradient(circle, rgba(166, 120, 255, 0.15) 1px, transparent 1px);
-  background-size: 120px 120px, 160px 160px;
+    radial-gradient(circle, rgba(255, 79, 161, 0.35) 1.2px, transparent 1.2px),
+    radial-gradient(circle, rgba(166, 120, 255, 0.25) 1.2px, transparent 1.2px);
+  background-size: 100px 100px, 130px 130px;
   animation: htbDotsMove 60s linear infinite;
 }
 
@@ -204,11 +206,11 @@
 .htb-glitter {
   z-index: -1;
   background:
-    radial-gradient(circle at 25% 35%, rgba(166, 120, 255, 0.3) 0 4px, transparent 4px),
-    radial-gradient(circle at 75% 65%, rgba(255, 79, 161, 0.3) 0 3px, transparent 3px);
-  background-size: 250px 250px;
+    radial-gradient(circle at 25% 35%, rgba(166, 120, 255, 0.4) 0 4px, transparent 4px),
+    radial-gradient(circle at 75% 65%, rgba(255, 79, 161, 0.4) 0 3px, transparent 3px);
+  background-size: 180px 180px;
   animation: htbGlitterMove 20s linear infinite;
-  opacity: 0.2;
+  opacity: 0.28;
   mix-blend-mode: screen;
 }
 
