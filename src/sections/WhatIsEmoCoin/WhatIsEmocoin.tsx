@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import "./WhatIsEmocoin.css";
-import emoMascot from "../../assets/images/whatIsEmocoinImgs/emogirlNeon.png";
+import emoMascot from "../../assets/images/whatIsEmocoinImgs/emo-girl.png";
 
 const WhatIsEmocoin: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
