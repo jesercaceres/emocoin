@@ -4,6 +4,7 @@ import Hero from '../sections/hero/Hero'
 import WhatIsEmoCoin from '../sections/WhatIsEmoCoin/WhatIsEmocoin';
 import Tokenomics from '../sections/tokenomics/Tokenomics';
 import HowToBuy from '../sections/howToBuy/HowToBuy';
+import Footer from '../layout/Footer';
 
 
 const Home = () => {
@@ -14,7 +15,7 @@ const Home = () => {
       <WhatIsEmoCoin />
       <Tokenomics />
       <HowToBuy />
-      
+      <Footer />
     </>
   );
 };

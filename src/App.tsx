@@ -6,6 +6,7 @@ import Header from "./layout/Header";
 import WhatIsEmocoin from "./sections/WhatIsEmoCoin/WhatIsEmocoin";
 import DividerTokenomicsHowToBuy from "./components/divider/DividerTokenomicsHowToBuy";
 import HowToBuy from "./sections/howToBuy/HowToBuy";
+import Footer from "./layout/Footer";
 
 const App: React.FC = () => {
   const scrollRef = useLocoScroll();
@@ -18,6 +19,7 @@ const App: React.FC = () => {
         <WhatIsEmocoin />
         <Tokenomics />
         <HowToBuy />
+        <Footer />
       </div>
     </>
   );

@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&family=UnifrakturCook&display=swap');
+
+.footer {
+  background-color: #1a1a1a;
+  color: #ccc;
+  padding: 1rem 1.2rem;
+  border-top: 1px solid #333;
+  font-family: "Saint", sans-serif;
+  text-align: center;
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-family: "Saint", sans-serif;
+}
+
+.footer-links a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: var(--btn-primary-hover);
+}
+
+.footer-copy {
+  font-family: "UnifrakturCook", cursive;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.footer-separator {
+  width: 100%;
+  border-top: 1px solid #333;
+  margin-top: 1rem;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-logo {
+  width: 36px;
+  height: 36px;
+}
+
+.footer-name {
+  font-family: "CursedCalvade", sans-serif;
+  font-size: 1.2rem;
+  color: #fff;
+  letter-spacing: 0.08rem;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .footer-links {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .footer-copy {
+    white-space: normal;
+  }
+}
