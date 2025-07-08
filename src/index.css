@@ -1,17 +1,18 @@
-/* 1) Import Google Fonts */
+/* =========================== */
+/* index.css                   */
+/* =========================== */
+
 @import url("https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&family=Permanent+Marker&family=Rock+Salt&family=UnifrakturCook&family=Special+Elite&family=Shadows+Into+Light&display=swap");
 
-/* 2) Variáveis globais */
 :root {
   --bg-home:        #181818;
   --bg-whatis:      #181818;
   --bg-tokenomics:  #181818;
   --bg-community:   #1a1a28;
-  --bg-howTobuy:   #181818;
+  --bg-howTobuy:    #181818;
 
   --text-color:     #ffffff;
 
-  /* fontes */
   --font-base:        "Segoe UI", sans-serif;
   --font-emo-title:   "Creepster", cursive;
   --font-emo-drip:    "Nosifer", cursive;
@@ -21,7 +22,6 @@
   --font-emo-type:    "Special Elite", monospace;
   --font-emo-light:   "Shadows Into Light", cursive;
 
-  /* botões */
   --btn-radius:               8px;
   --btn-primary-bg:           #ff007f;
   --btn-primary-text:         #ffffff;
@@ -34,22 +34,27 @@
   --header-height: 4.5rem;
 }
 
-/* 3) Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* 4) Tema global */
 body {
   background-color: var(--bg-home);
   color: var(--text-color);
   font-family: var(--font-emo-drip);
   transition: background-color 0.6s ease-in-out;
+  height: 100%;
+  overflow: hidden;
 }
 
-/* 5) Transições de fundo por seção */
+html {
+  height: 100%;
+  overflow: hidden;
+  scroll-behavior: smooth;
+}
+
 body.page-whatis {
   background-color: var(--bg-whatis);
 }
@@ -63,45 +68,33 @@ body.page-howToBuy {
   background-color: var(--bg-howTobuy);
 }
 
-/* 6) Scroll suave */
-html {
-  scroll-behavior: smooth;
-}
-
-/* 7) Padrão de seção */
 .section {
   padding: 4rem 1rem 6rem;
   position: relative;
   z-index: 0;
 }
 
-
-
 @media (min-width: 768px) {
   .section {
     padding: 6rem 2rem 8rem;
   }
-}
-@media (min-width: 1024px) {
-  .section {
-    padding: 8rem 4rem 10rem;
-  }
-}
-
-/* 8) Scroll margin para evitar corte pelo header fixo */
-#tokenomics,
-#howToBuy {
-  scroll-margin-top: var(--header-height);
-}
-
-@media (min-width: 768px) {
   #tokenomics,
   #howToBuy {
     scroll-margin-top: 5rem;
   }
 }
 
-/* 9) Fontes locais */
+@media (min-width: 1024px) {
+  .section {
+    padding: 8rem 4rem 10rem;
+  }
+}
+
+#tokenomics,
+#howToBuy {
+  scroll-margin-top: var(--header-height);
+}
+
 @font-face {
   font-family: "CursedCalvade";
   src: url("./assets/fonts/CursedCavalcade-xRxwm.ttf") format("truetype");
@@ -112,13 +105,9 @@ html {
   src: url("./assets/fonts/Saint-4ZJ4.ttf") format("truetype");
 }
 
-/* 10) Regras obrigatórias para locomotive-scroll */
-html,
-body {
-  height: 100%;
-  overflow: hidden; /* evita conflito com scroll nativo */
-}
-
 #scroll-container {
   overflow: hidden;
 }
+
+/* Correção: body precisa ter overflow visível se for usar scroll */
+/* Se locomotiva-scroll não for usado, remova overflow: hidden */
