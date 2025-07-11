@@ -32,7 +32,7 @@
 .htb__title-wrapper {
   display: flex;
   justify-content: center;
-  gap: 0.2em;
+  gap: 0.25em;
   flex-wrap: wrap;
   font-family: var(--font-emo-drip);
   color: #ff4fa1;
@@ -129,14 +129,14 @@
 }
 
 .htb__step-title {
-  font-family: var(--font-emo-rock);
+  font-family: var(--font-emo-gothic);
   font-size: 1.4rem;
   color: #ff4fa1;
   margin-bottom: 0.3rem;
 }
 
 .htb__step-subtitle {
-  font-family: var(--font-emo-light);
+  font-family: var(--font-emo-gothic);
   font-size: 1.1rem;
   font-style: italic;
   color: #ffb7dd;

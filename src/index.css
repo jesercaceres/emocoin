@@ -105,9 +105,4 @@ body.page-howToBuy {
   src: url("./assets/fonts/Saint-4ZJ4.ttf") format("truetype");
 }
 
-#scroll-container {
-  overflow: hidden;
-}
 
-/* Correção: body precisa ter overflow visível se for usar scroll */
-/* Se locomotiva-scroll não for usado, remova overflow: hidden */

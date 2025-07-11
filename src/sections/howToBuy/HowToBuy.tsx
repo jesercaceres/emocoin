@@ -48,7 +48,7 @@ const HowToBuy: React.FC = () => {
         viewport={{ amount: 0.3 }}
       >
         <div className="htb__title-wrapper">
-          {"HOW TO BUY $EMO".split("").map((ch, i) => (
+          {"HOW TO BUY EMO".split("").map((ch, i) => (
             <motion.span
               key={i}
               className="htb__title-letter"

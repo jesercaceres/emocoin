@@ -1,18 +1,9 @@
-/* tokenomics.css - Corrigido e otimizado */
-
 :root {
   --accent-pink: #ff4fa1;
   --accent-purple: #a678ff;
   --bg-main: #181818;
   --card-bg-1: #1e1e1e;
   --card-bg-2: #232323;
-  --font-nosifer: "Nosifer", cursive;
-}
-
-@font-face {
-  font-family: "Nosifer";
-  font-display: swap;
-  src: url("https://fonts.gstatic.com/s/nosifer/v19/ZGjXol5JTp0g5bx5uWs0pQ.ttf") format("truetype");
 }
 
 body {
@@ -39,6 +30,7 @@ body {
   color: #bfbfbf;
   font-size: 1.05rem;
   letter-spacing: 0.08em;
+  font-family: var(--font-emo-type);
 }
 
 /* === Background Camadas === */
@@ -101,6 +93,7 @@ body {
   position: relative;
   min-height: 250px;
   padding: 2.2rem 1.6rem 2.5rem;
+  font-family: var(--font-emo-gothic);
   border-radius: 1rem;
   background: linear-gradient(135deg, var(--card-bg-1) 0%, var(--card-bg-2) 100%);
   box-shadow:
